@@ -46,8 +46,9 @@ cloudinary.config({
 
 
 router.use(cors({
-    origin: process.env.CLIENT_URL,
+    origin: 'http://13.234.75.47:5173',
     credentials: true
+
 }));
 
 router.use(express.json());

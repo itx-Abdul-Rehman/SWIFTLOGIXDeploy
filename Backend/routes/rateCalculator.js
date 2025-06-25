@@ -9,7 +9,11 @@ import haversine from 'haversine-distance'
 const geocoder = mbxGeocoding({ accessToken: process.env.MAP_TOKEN });
 const router = e.Router();
 
-router.use(cors())
+router.use(cors({
+    origin: 'http://13.234.75.47:5173',
+    credentials: true
+
+}));
 router.use(bodyParser.json())
 
 const findOriginCityCordinates = async (originCity) => {

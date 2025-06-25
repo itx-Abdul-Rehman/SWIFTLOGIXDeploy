@@ -17,9 +17,11 @@ const geocoder = mbxGeocoding({ accessToken: process.env.MAP_TOKEN });
 const router = express.Router();
 
 router.use(cors({
-   origin: 'http://localhost:5173',
-   credentials: true
+    origin: 'http://13.234.75.47:5173',
+  credentials: true
+
 }));
+
 router.use(express.json());
 
 const requireLogin = ((req, res, next) => {

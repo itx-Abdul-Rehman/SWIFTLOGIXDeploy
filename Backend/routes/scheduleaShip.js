@@ -18,8 +18,8 @@ const router = e.Router();
 const stripe = new Stripe(process.env.STRIPE_KEY);  //stripe apikey used to access stripe features
 
 router.use(cors({
-    origin: process.env.CLIENT_URL,
-    credentials: true
+    origin: 'http://13.234.75.47:5173',
+  credentials: true
 
 }));
 router.use(bodyParser.json());
