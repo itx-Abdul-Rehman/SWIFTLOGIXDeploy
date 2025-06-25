@@ -34,7 +34,7 @@ import AdminProfile from './components/AdminProfile.jsx';
 import AdminShipments from './components/AdminShipments.jsx';
 import AdminRateCalculator from './components/AdminRateCalculator.jsx';
 import AdminRateDisplay from './components/AdminRateDisplay.jsx';
-import AdminScheduleShip from './components/AdminScheduleship.jsx';
+import AdminScheduleShip from './components/AdminScheduleShip.jsx';
 import AdminReprintShippingLabel from './components/AdminReprintShippingLabel.jsx';
 import AdminPayment from './components/AdminPayment.jsx';
 import AdminTrackShipment from './components/AdminTrackShipment.jsx';
