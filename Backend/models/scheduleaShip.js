@@ -1,0 +1,43 @@
+import mongoose from "mongoose";
+
+const scheduleShipSchema = new mongoose.Schema({
+    customerid:{type:String,required:false},
+    trackingid:{type:String,required:true},
+    sendername: { type: String, required: true },
+    senderemail: { type: String, required: true },
+    sendercontact: { type: String, required: true },
+    sendercnic: { type: String, required: true },
+    receivername: { type: String, required: true },
+    receiveremail: { type: String, required: true },
+    receivercontact: { type: String, required: true },
+    receivercnic: { type: String, required: true },
+    receiverarea: { type: String, required: true },
+    receiverhouseno: { type: String, required: true },
+    receiveraddress: { type: String, required: true },
+    originCity: { type: String, required: true },
+    destinationCity: { type: String, required: true },
+    weight: { type: String, required: true },
+    pieces: { type: String, required: true },
+    pickupdate: { type: String, required: false },
+    pickuptime: { type: String, required: false },
+    insurance: { type: String, required: true },
+    orignalprice: {type: String, required: false},
+    pickupaddress: { type: String, required: false },
+    shipmentType: { type: String, required: true },
+    deliveryMethod: { type: String, required: true },
+    sensitivePackage: {type:String,required:true},
+    packageDescription: {type:String,required:true},
+    shipmentStatus:{type:String,required:true},
+    basePrice:{type:String,required:true},
+    weightCharges:{type:String,required:true},
+    distanceCharges:{type:String,required:true},
+    totalPrice:{type:String,required:true},
+    paymentMethod:{type:String,required:true},
+    datetime:{type:String,required:true},
+    assigned:{type:Boolean,required:true},
+    deliveryDate:{type:String,required:false},
+    paid:{type:Boolean,required:true},
+    payby:{type:String,required:true}
+});
+
+export const ScheduleShip=mongoose.model('ScheduleShip',scheduleShipSchema);
