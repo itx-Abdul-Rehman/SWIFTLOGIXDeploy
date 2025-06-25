@@ -21,7 +21,7 @@ const RiderProfile = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://13.203.194.4:3000/rider-profile',
+        const response = await fetch('http://13.234.75.47:3000/rider-profile',
           { credentials: 'include' }
         );
         const result = await response.json();

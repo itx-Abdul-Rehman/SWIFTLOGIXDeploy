@@ -24,7 +24,7 @@ const AdminReprintShippingLabel = () => {
 
                 const token = localStorage.getItem('token');
 
-                const response = await fetch('http://13.203.194.4:3000/admin', {
+                const response = await fetch('http://13.234.75.47:3000/admin', {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`
@@ -58,7 +58,7 @@ const AdminReprintShippingLabel = () => {
     const genrateBarCode = async (shipments) => {
 
         try {
-            const response = await fetch('http://13.203.194.4:3000/regenrate-bar-qrcode',
+            const response = await fetch('http://13.234.75.47:3000/regenrate-bar-qrcode',
                 {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -81,7 +81,7 @@ const AdminReprintShippingLabel = () => {
 
     const getShipmentsLabel = async () => {
         try {
-            const response = await fetch('http://13.203.194.4:3000/reprint-label',
+            const response = await fetch('http://13.234.75.47:3000/reprint-label',
                 {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },

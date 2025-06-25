@@ -37,7 +37,7 @@ const AdminRider = () => {
 
                 const token = localStorage.getItem('token');
 
-                const response = await fetch('http://13.203.194.4:3000/admin', {
+                const response = await fetch('http://13.234.75.47:3000/admin', {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`
@@ -85,7 +85,7 @@ const AdminRider = () => {
     //here get selected type claims
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch('http://13.203.194.4:3000/get-riders',
+            const response = await fetch('http://13.234.75.47:3000/get-riders',
                 {
                     method: 'POST',
                     credentials: 'include',
@@ -117,7 +117,7 @@ const AdminRider = () => {
     //here count  rejected riders
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch('http://13.203.194.4:3000/get-riders',
+            const response = await fetch('http://13.234.75.47:3000/get-riders',
                 {
                     method: 'POST',
                     credentials: 'include',
@@ -141,7 +141,7 @@ const AdminRider = () => {
     //here count pending riders
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch('http://13.203.194.4:3000/get-riders',
+            const response = await fetch('http://13.234.75.47:3000/get-riders',
                 {
                     method: 'POST',
                     credentials: 'include',
@@ -164,7 +164,7 @@ const AdminRider = () => {
     //here count active riders
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch('http://13.203.194.4:3000/get-riders',
+            const response = await fetch('http://13.234.75.47:3000/get-riders',
                 {
                     method: 'POST',
                     credentials: 'include',
@@ -222,7 +222,7 @@ const AdminRider = () => {
             setProcessingStatus(riderStatus)
             const cnic = allRiders[index].cnic;
 
-            const response = await fetch('http://13.203.194.4:3000/update-riders',
+            const response = await fetch('http://13.234.75.47:3000/update-riders',
                 {
                     method: 'POST',
                     credentials: 'include',

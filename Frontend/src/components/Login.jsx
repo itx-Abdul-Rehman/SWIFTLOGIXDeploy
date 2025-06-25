@@ -64,7 +64,7 @@ const Login = () => {
     setStatus("processing");
     setError('');
     // Handle actual login logic here
-    const response = await fetch('http://13.203.194.4:3000/login', {
+    const response = await fetch('http://13.234.75.47:3000/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
@@ -105,7 +105,7 @@ const Login = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://13.203.194.4:3000/customer-dashboard',
+        const response = await fetch('http://13.234.75.47:3000/customer-dashboard',
           { credentials: 'include' }
         );
         const result = await response.json();

@@ -35,7 +35,7 @@ const SidebarCustomer = () => {
     const handleLogout = async () => {
         try {
 
-            const response = await fetch('http://13.203.194.4:3000/logout',
+            const response = await fetch('http://13.234.75.47:3000/logout',
                 { credentials: 'include' }
             );
 

@@ -111,7 +111,7 @@ const CustomerProfile = () => {
     if (validateEditData()) {
       try {
         setIsResponse(false)
-        const response = await fetch('http://13.203.194.4:3000/verifyedit-customer',
+        const response = await fetch('http://13.234.75.47:3000/verifyedit-customer',
           {
             method: 'POST',
             credentials: 'include',
@@ -145,7 +145,7 @@ const CustomerProfile = () => {
 
   const saveEditDetails = async () => {
     try {
-      const response = await fetch('http://13.203.194.4:3000/saveedit-customer',
+      const response = await fetch('http://13.234.75.47:3000/saveedit-customer',
         {
           method: 'PUT',
           credentials: 'include',
@@ -190,7 +190,7 @@ const CustomerProfile = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://13.203.194.4:3000/customer-profile',
+        const response = await fetch('http://13.234.75.47:3000/customer-profile',
           { credentials: 'include' }
         );
         const result = await response.json();
@@ -246,7 +246,7 @@ const CustomerProfile = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://13.203.194.4:3000/customer-profile',
+        const response = await fetch('http://13.234.75.47:3000/customer-profile',
           { credentials: 'include' }
         );
         const result = await response.json();
@@ -283,7 +283,7 @@ const CustomerProfile = () => {
     }
 
     try {
-      const response = await fetch('http://13.203.194.4:3000/add-cnic',
+      const response = await fetch('http://13.234.75.47:3000/add-cnic',
         {
           method: 'PATCH',
           credentials: 'include',
@@ -327,7 +327,7 @@ const CustomerProfile = () => {
         return
       }
 
-      const response = await fetch('http://13.203.194.4:3000/add-address',
+      const response = await fetch('http://13.234.75.47:3000/add-address',
         {
           method: 'PATCH',
           credentials: 'include',

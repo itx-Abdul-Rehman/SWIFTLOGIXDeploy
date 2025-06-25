@@ -53,7 +53,7 @@ const RateCalculatorMain = () => {
         }
         setIsResponse('processing')
         try {
-            const response = await fetch("http://13.203.194.4:3000/calculate-point", {
+            const response = await fetch("http://13.234.75.47:3000/calculate-point", {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formDetails),
