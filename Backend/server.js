@@ -54,7 +54,7 @@ app.use(session({
 
 // CORS configuration
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: 'http://13.234.75.47:5173',
   credentials: true
 }));
 
