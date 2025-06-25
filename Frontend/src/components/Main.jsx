@@ -75,7 +75,7 @@ const Main = () => {
 
         try {
             setIsResponse('processing')
-            const response = await fetch("http://localhost:3000/track-shipment", {
+            const response = await fetch("http://13.203.194.4:3000/track-shipment", {
                 method: 'POST',
                 credentials: 'include',
                 headers: { 'Content-Type': 'application/json' },

@@ -8,7 +8,7 @@ import tick from './icons/tick.svg'
 import { io } from 'socket.io-client';
 import OfflineOnline from './OfflineOnline';
 
-const socket = io("http://localhost:3000", {
+const socket = io("http://13.203.194.4:3000", {
     reconnection: true,
     reconnectionAttempts: 10,
     reconnectionDelay: 1000,
@@ -43,7 +43,7 @@ const RiderDashboard = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:3000/rider-dashboard',
+                const response = await fetch('http://13.203.194.4:3000/rider-dashboard',
                     { credentials: 'include' }
                 );
                 const result = await response.json();
@@ -67,7 +67,7 @@ const RiderDashboard = () => {
 
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:3000/get-deliveries',
+                const response = await fetch('http://13.203.194.4:3000/get-deliveries',
                     {
                         method: 'POST',
                         credentials: 'include',
@@ -113,7 +113,7 @@ const RiderDashboard = () => {
                 return
             }
             setProcessingIndex(index)
-            const response = await fetch('http://localhost:3000/assigned-delivery',
+            const response = await fetch('http://13.203.194.4:3000/assigned-delivery',
                 {
                     method: 'POST',
                     credentials: 'include',
@@ -145,7 +145,7 @@ const RiderDashboard = () => {
     useEffect(() => {
         const riderPickedShipments = async () => {
             try {
-                const response = await fetch("http://localhost:3000/check-pick-shipment",
+                const response = await fetch("http://13.203.194.4:3000/check-pick-shipment",
                     {
                         credentials: 'include'
                     }

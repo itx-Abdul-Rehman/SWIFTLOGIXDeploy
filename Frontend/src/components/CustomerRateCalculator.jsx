@@ -42,7 +42,7 @@ const CustomerRateCalculator = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:3000/customer-ratecalculator',
+                const response = await fetch('http://13.203.194.4:3000/customer-ratecalculator',
                     { credentials: 'include' }
                 );
                 const result = await response.json();
@@ -100,7 +100,7 @@ const CustomerRateCalculator = () => {
         setStatus("processing");
 
         try {
-            const response = await fetch("http://localhost:3000/calculate-point", {
+            const response = await fetch("http://13.203.194.4:3000/calculate-point", {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formDetails),

@@ -36,7 +36,7 @@ const AdminInsurance = () => {
 
                 const token = localStorage.getItem('token');
 
-                const response = await fetch('http://localhost:3000/admin', {
+                const response = await fetch('http://13.203.194.4:3000/admin', {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`
@@ -84,7 +84,7 @@ const AdminInsurance = () => {
     //here get selected type claims
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch('http://localhost:3000/get-insurance-claims',
+            const response = await fetch('http://13.203.194.4:3000/get-insurance-claims',
                 {
                     method: 'POST',
                     credentials: 'include',
@@ -116,7 +116,7 @@ const AdminInsurance = () => {
     //here count  accepted claims
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch('http://localhost:3000/get-insurance-claims',
+            const response = await fetch('http://13.203.194.4:3000/get-insurance-claims',
                 {
                     method: 'POST',
                     credentials: 'include',
@@ -140,7 +140,7 @@ const AdminInsurance = () => {
     //here count pending claims
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch('http://localhost:3000/get-insurance-claims',
+            const response = await fetch('http://13.203.194.4:3000/get-insurance-claims',
                 {
                     method: 'POST',
                     credentials: 'include',
@@ -163,7 +163,7 @@ const AdminInsurance = () => {
     //here count rejected claims
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch('http://localhost:3000/get-insurance-claims',
+            const response = await fetch('http://13.203.194.4:3000/get-insurance-claims',
                 {
                     method: 'POST',
                     credentials: 'include',
@@ -186,7 +186,7 @@ const AdminInsurance = () => {
     //here count completed claims
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch('http://localhost:3000/get-insurance-claims',
+            const response = await fetch('http://13.203.194.4:3000/get-insurance-claims',
                 {
                     method: 'POST',
                     credentials: 'include',
@@ -245,7 +245,7 @@ const AdminInsurance = () => {
             setProcessingStatus(claimStatus)
             const trackingid = allInsuranceClaims[index].trackingid;
 
-            const response = await fetch('http://localhost:3000/update-insurance-claims',
+            const response = await fetch('http://13.203.194.4:3000/update-insurance-claims',
                 {
                     method: 'POST',
                     credentials: 'include',

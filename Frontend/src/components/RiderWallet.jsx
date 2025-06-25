@@ -25,7 +25,7 @@ const RiderWallet = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:3000/rider-wallet',
+        const response = await fetch('http://13.203.194.4:3000/rider-wallet',
           { credentials: 'include' }
         );
         const result = await response.json();
@@ -75,7 +75,7 @@ const RiderWallet = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:3000/withdraw-money-cash', {
+      const response = await fetch('http://13.203.194.4:3000/withdraw-money-cash', {
         method: 'POST',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },

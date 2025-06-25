@@ -60,7 +60,7 @@ const OTPCard = ({ email, userId, setOTPCard, setOTPVerified, navigate }) => {
     const otpJson = { otp: otpCode, userId: userId };
 
     try {
-      const response = await fetch('http://localhost:3000/verifyotp', {
+      const response = await fetch('http://13.203.194.4:3000/verifyotp', {
         method: 'POST',
         credentials:'include',
         headers: { 'Content-Type': 'application/json' },
@@ -90,7 +90,7 @@ const OTPCard = ({ email, userId, setOTPCard, setOTPVerified, navigate }) => {
 
     // Logic to resend OTP goes here (send request to your API to resend OTP)
     try {
-      const response = await fetch('http://localhost:3000/resendotp',
+      const response = await fetch('http://13.203.194.4:3000/resendotp',
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },

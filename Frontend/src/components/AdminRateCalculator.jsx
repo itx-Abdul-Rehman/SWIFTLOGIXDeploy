@@ -27,7 +27,7 @@ const AdminRateCalculator = () => {
 
                 const token = localStorage.getItem('token');
 
-                const response = await fetch('http://localhost:3000/admin', {
+                const response = await fetch('http://13.203.194.4:3000/admin', {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`
@@ -103,7 +103,7 @@ const AdminRateCalculator = () => {
         }
         setStatus("processing");
         try {
-            const response = await fetch("http://localhost:3000/calculate-point", {
+            const response = await fetch("http://13.203.194.4:3000/calculate-point", {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formDetails),

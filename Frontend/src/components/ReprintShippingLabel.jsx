@@ -29,7 +29,7 @@ const ReprintShippingLabel = () => {
     const genrateBarCode = async (shipments) => {
 
         try {
-            const response = await fetch('http://localhost:3000/regenrate-bar-qrcode',
+            const response = await fetch('http://13.203.194.4:3000/regenrate-bar-qrcode',
                 {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -53,7 +53,7 @@ const ReprintShippingLabel = () => {
     const getShipmentsLabel = async () => {
         try {
             setIsResponse('processing')
-            const response = await fetch('http://localhost:3000/reprint-label',
+            const response = await fetch('http://13.203.194.4:3000/reprint-label',
                 {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },

@@ -49,7 +49,7 @@ const RiderSignup = () => {
 
     const handleNext = async () => {
         try {
-            const response = await fetch('http://localhost:3000/verify-riderdataexist',
+            const response = await fetch('http://13.203.194.4:3000/verify-riderdataexist',
                 {
                     method: 'POST',
                     credentials: 'include',
@@ -111,7 +111,7 @@ const RiderSignup = () => {
             formData.append('dateofbirth', riderInformation.dateofbirth);
             formData.append('picture', riderInformation.picture);
 
-            const response = await fetch('http://localhost:3000/rider-signup',
+            const response = await fetch('http://13.203.194.4:3000/rider-signup',
                 {
                     method: 'POST',
                     credentials: 'include',

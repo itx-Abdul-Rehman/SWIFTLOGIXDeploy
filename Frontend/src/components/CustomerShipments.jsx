@@ -22,7 +22,7 @@ const CustomerShipments = () => {
     //here get selected shipments like pending,completed or scheduled from servers/database
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch('http://localhost:3000/get-shipments',
+            const response = await fetch('http://13.203.194.4:3000/get-shipments',
                 {
                     method: 'POST',
                     credentials: 'include',
@@ -100,7 +100,7 @@ const CustomerShipments = () => {
     //here count shipments completed
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch('http://localhost:3000/get-shipments',
+            const response = await fetch('http://13.203.194.4:3000/get-shipments',
                 {
                     method: 'POST',
                     credentials: 'include',
@@ -123,7 +123,7 @@ const CustomerShipments = () => {
     //here count shipments scheduled
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch('http://localhost:3000/get-shipments',
+            const response = await fetch('http://13.203.194.4:3000/get-shipments',
                 {
                     method: 'POST',
                     credentials: 'include',
@@ -146,7 +146,7 @@ const CustomerShipments = () => {
     //here count shipments pending
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch('http://localhost:3000/get-shipments',
+            const response = await fetch('http://13.203.194.4:3000/get-shipments',
                 {
                     method: 'POST',
                     credentials: 'include',
@@ -175,7 +175,7 @@ const CustomerShipments = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:3000/customer-shipments',
+                const response = await fetch('http://13.203.194.4:3000/customer-shipments',
                     { credentials: 'include' }
                 );
                 const result = await response.json();

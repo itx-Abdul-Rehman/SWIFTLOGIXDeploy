@@ -64,7 +64,7 @@ const MyProfileOTPCard = ({ oldemail, email, userId, setOTPCard, setOTPVerified,
     const otpJson = { otp: otpCode, userId: userId };
 
     try {
-      const response = await fetch('http://localhost:3000/verifyotp', {
+      const response = await fetch('http://13.203.194.4:3000/verifyotp', {
         method: 'POST',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
@@ -93,7 +93,7 @@ const MyProfileOTPCard = ({ oldemail, email, userId, setOTPCard, setOTPVerified,
   const handleResendOtp = async () => {
     try {
       setIsResponse(false)
-      const response = await fetch('http://localhost:3000/resendotp',
+      const response = await fetch('http://13.203.194.4:3000/resendotp',
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },

@@ -6,7 +6,7 @@ import end from './icons/end.png'
 import mapboxgl from "mapbox-gl";
 import { io } from 'socket.io-client';
 
-const socket = io("http://localhost:3000", {
+const socket = io("http://13.203.194.4:3000", {
     reconnection: true,
     reconnectionAttempts: 10,
     reconnectionDelay: 1000,
@@ -247,7 +247,7 @@ const Map = ({ updateAddress, originCityCoords, destinationCityCoords, inTransit
 
     const shipmentComplete = async () => {
         try {
-            const response = await fetch('http://localhost:3000/shipment-completed',
+            const response = await fetch('http://13.203.194.4:3000/shipment-completed',
                 {
                     method: 'POST',
                     credentials: 'include',

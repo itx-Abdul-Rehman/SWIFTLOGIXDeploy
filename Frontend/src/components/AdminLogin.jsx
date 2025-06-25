@@ -45,7 +45,7 @@ const AdminLogin = () => {
 
         setError('');
         // Handle actual login logic here
-        const response = await fetch('http://localhost:3000/admin-login', {
+        const response = await fetch('http://13.203.194.4:3000/admin-login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',

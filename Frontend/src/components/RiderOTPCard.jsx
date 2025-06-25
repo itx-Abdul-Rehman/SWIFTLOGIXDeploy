@@ -68,7 +68,7 @@ const RiderOTPCard = ({ email, userId, setOTPCard, setOTPVerified,  navigate }) 
     const otpJson = { otp: otpCode, userId: userId };
 
     try {
-      const response = await fetch('http://localhost:3000/rider-verifyotp', {
+      const response = await fetch('http://13.203.194.4:3000/rider-verifyotp', {
         method: 'POST',
         credentials:'include',
         headers: { 'Content-Type': 'application/json' },
@@ -97,7 +97,7 @@ const RiderOTPCard = ({ email, userId, setOTPCard, setOTPVerified,  navigate }) 
 
     // Logic to resend OTP goes here (send request to your API to resend OTP)
     try {
-      const response = await fetch('http://localhost:3000/rider-resendotp',
+      const response = await fetch('http://13.203.194.4:3000/rider-resendotp',
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },

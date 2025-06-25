@@ -56,7 +56,7 @@ const OTPCardForgotPassword = ({ email, userId, setOTPCard, setOTPVerified }) =>
     const otpPayload = { otp: otpCode, userId };
 
     try {
-      const response = await fetch('http://localhost:3000/verifyotp-forgot-password', {
+      const response = await fetch('http://13.203.194.4:3000/verifyotp-forgot-password', {
         method: 'POST',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
@@ -82,7 +82,7 @@ const OTPCardForgotPassword = ({ email, userId, setOTPCard, setOTPVerified }) =>
 
   const handleResendOtp = async () => {
     try {
-      const response = await fetch('http://localhost:3000/resendotp-forgot-password', {
+      const response = await fetch('http://13.203.194.4:3000/resendotp-forgot-password', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, userId }),

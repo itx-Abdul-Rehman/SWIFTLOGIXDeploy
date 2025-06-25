@@ -66,7 +66,7 @@ const CustomerDashboard = () => {
         }
 
         try {
-            const response = await fetch("http://localhost:3000/track-shipment", {
+            const response = await fetch("http://13.203.194.4:3000/track-shipment", {
                 method: 'POST',
                 credentials: 'include',
                 headers: { 'Content-Type': 'application/json' },
@@ -101,7 +101,7 @@ const CustomerDashboard = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:3000/customer-dashboard', {
+                const response = await fetch('http://13.203.194.4:3000/customer-dashboard', {
                     credentials: 'include'
                 });
 

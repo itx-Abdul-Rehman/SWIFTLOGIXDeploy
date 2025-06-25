@@ -57,7 +57,7 @@ const ForgotPassword = () => {
 
             setError('')
             setIsResponse('processing')
-            const response = await fetch('http://localhost:3000/send-otp-forgot-password', {
+            const response = await fetch('http://13.203.194.4:3000/send-otp-forgot-password', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, type })
@@ -95,7 +95,7 @@ const ForgotPassword = () => {
                 return
             }
             setIsResponse('processing')
-            const response = await fetch('http://localhost:3000/create-new-password', {
+            const response = await fetch('http://13.203.194.4:3000/create-new-password', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(
