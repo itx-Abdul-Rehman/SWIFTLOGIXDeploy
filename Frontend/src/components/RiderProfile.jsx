@@ -4,7 +4,7 @@ import { FaEdit, FaComments } from 'react-icons/fa';
 import mail from './icons/email.png';
 import mobile from './icons/mobile.png';
 import password from './icons/password.png';
-import profile from './icons/profile.png';
+import profile from './icons/Profile.png';
 import address from './icons/address.png';
 import card from './icons/card.png';
 import vehicle from './icons/vehicle.png';
