@@ -33,7 +33,7 @@ const RiderShipments = () => {
     //here get selected shipments like pending,completed or scheduled from servers/database
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch('http://13.203.194.4:3000/get-rider-shipments',
+            const response = await fetch('http://13.234.75.47:3000/get-rider-shipments',
                 {
                     method: 'POST',
                     credentials: 'include',
@@ -57,7 +57,7 @@ const RiderShipments = () => {
     //here count shipments completed
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch('http://13.203.194.4:3000/get-rider-shipments',
+            const response = await fetch('http://13.234.75.47:3000/get-rider-shipments',
                 {
                     method: 'POST',
                     credentials: 'include',
@@ -80,7 +80,7 @@ const RiderShipments = () => {
     //here count shipments accepted
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch('http://13.203.194.4:3000/get-rider-shipments',
+            const response = await fetch('http://13.234.75.47:3000/get-rider-shipments',
                 {
                     method: 'POST',
                     credentials: 'include',
@@ -103,7 +103,7 @@ const RiderShipments = () => {
     //here count shipments pending
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch('http://13.203.194.4:3000/get-rider-shipments',
+            const response = await fetch('http://13.234.75.47:3000/get-rider-shipments',
                 {
                     method: 'POST',
                     credentials: 'include',
@@ -132,7 +132,7 @@ const RiderShipments = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://13.203.194.4:3000/rider-shipments',
+                const response = await fetch('http://13.234.75.47:3000/rider-shipments',
                     { credentials: 'include' }
                 );
                 const result = await response.json();
@@ -164,7 +164,7 @@ const RiderShipments = () => {
 
     const handleCancel = async (index) => {
         try {
-            const response = await fetch("http://13.203.194.4:3000/rider-cancel-shipment",
+            const response = await fetch("http://13.234.75.47:3000/rider-cancel-shipment",
                 {
                     method: 'POST',
                     credentials: 'include',
