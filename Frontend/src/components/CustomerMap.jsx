@@ -39,7 +39,9 @@ const CustomerMap = ({ originCityCoords, destinationCityCoords, trackingId, setL
 
     const calculateTimeDifference = (pastDate) => {
         const now = new Date();
-        const diffMs = now - pastDate;
+        const past = new Date(pastDate);
+
+        const diffMs = now - past;
 
         const minutes = Math.floor(diffMs / (1000 * 60));
         const hours = Math.floor(diffMs / (1000 * 60 * 60));
