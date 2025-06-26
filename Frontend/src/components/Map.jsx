@@ -169,7 +169,7 @@ const Map = ({ updateAddress, originCityCoords, destinationCityCoords, inTransit
                 setoriginMarker(originMarker);
                 setdestinationMarker(destinationMarker);
 
-                newMap.on("load", async () => {
+                map.on("load", async () => {
                     if (inTransit && originCityCoords && destinationCityCoords) {
                         const url = `https://api.mapbox.com/directions/v5/mapbox/driving/${originCityCoords.lng},${originCityCoords.lat};${destinationCityCoords.lng},${destinationCityCoords.lat}?geometries=geojson&access_token=${mapboxgl.accessToken}`;
                         try {
@@ -179,7 +179,7 @@ const Map = ({ updateAddress, originCityCoords, destinationCityCoords, inTransit
                             if (data.routes.length > 0) {
                                 const route = data.routes[0].geometry;
 
-                                newMap.addSource("route", {
+                                map.addSource("route", {
                                     type: "geojson",
                                     data: {
                                         type: "Feature",
@@ -187,7 +187,7 @@ const Map = ({ updateAddress, originCityCoords, destinationCityCoords, inTransit
                                     },
                                 });
 
-                                newMap.addLayer({
+                                map.addLayer({
                                     id: "route-line",
                                     type: "line",
                                     source: "route",
