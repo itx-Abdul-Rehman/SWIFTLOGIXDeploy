@@ -49,16 +49,15 @@ const Map = ({ updateAddress, originCityCoords, destinationCityCoords, inTransit
     }, []);
 
 
-
     useEffect(() => {
-        // Load Mapbox CSS
+        // Only create map once
+        if (map) return;
+
         const cssLink = document.createElement("link");
         cssLink.rel = "stylesheet";
         cssLink.href = "https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css";
         document.head.appendChild(cssLink);
 
-
-        // Load Mapbox JS
         mapboxgl.accessToken = "pk.eyJ1IjoiaXRzcmVobWFuIiwiYSI6ImNtMjkwd3ZzeDAwZ3Myam42bXE4bmE0b3cifQ.M83dkK35hWBso_XVSYfvoQ";
         const newMap = new mapboxgl.Map({
             container: "map",
@@ -75,7 +74,10 @@ const Map = ({ updateAddress, originCityCoords, destinationCityCoords, inTransit
             .setPopup(new mapboxgl.Popup().setHTML(`<h3>${placeName}</h3>`))
             .addTo(newMap);
 
+        setMap(newMap);
+        setMarker(newMarker);
 
+        // Add origin and destination markers once
         if (inTransit && originCityCoords && destinationCityCoords) {
             const originMarkerElement = document.createElement("div");
             originMarkerElement.innerHTML = `<img src=${start} style="width: 35px; height: 35px; border-radius: 50%;">`;
@@ -95,7 +97,6 @@ const Map = ({ updateAddress, originCityCoords, destinationCityCoords, inTransit
             setdestinationMarker(destinationMarker);
         }
 
-
         newMap.addControl(
             new mapboxgl.GeolocateControl({
                 positionOptions: { enableHighAccuracy: true },
@@ -104,57 +105,45 @@ const Map = ({ updateAddress, originCityCoords, destinationCityCoords, inTransit
             })
         );
 
-        setMap(newMap);
-        setMarker(newMarker);
+        // Draw route once map is ready
+        newMap.on("load", async () => {
+            if (inTransit && originCityCoords && destinationCityCoords) {
+                const url = `https://api.mapbox.com/directions/v5/mapbox/driving/${originCityCoords.lng},${originCityCoords.lat};${destinationCityCoords.lng},${destinationCityCoords.lat}?geometries=geojson&access_token=${mapboxgl.accessToken}`;
+                try {
+                    const response = await fetch(url);
+                    const data = await response.json();
 
-        // Fetch optimized route from Mapbox Directions API
-        const getRoute = async () => {
-            const url = `https://api.mapbox.com/directions/v5/mapbox/driving/${originCityCoords.lng},${originCityCoords.lat};${destinationCityCoords.lng},${destinationCityCoords.lat}?geometries=geojson&access_token=${mapboxgl.accessToken}`;
-            try {
-                const response = await fetch(url);
-                const data = await response.json();
+                    if (data.routes.length > 0) {
+                        const route = data.routes[0].geometry;
 
-                if (data.routes.length > 0) {
-                    const route = data.routes[0].geometry;
+                        newMap.addSource("route", {
+                            type: "geojson",
+                            data: {
+                                type: "Feature",
+                                geometry: route,
+                            },
+                        });
 
-                    if (newMap.getSource("route")) {
-                        newMap.removeLayer("route-line");
-                        newMap.removeSource("route");
+                        newMap.addLayer({
+                            id: "route-line",
+                            type: "line",
+                            source: "route",
+                            layout: { "line-join": "round", "line-cap": "round" },
+                            paint: { "line-color": "#009688", "line-width": 4 },
+                        });
+                    } else {
+                        console.error("No routes found");
                     }
-
-                    newMap.addSource("route", {
-                        type: "geojson",
-                        data: {
-                            type: "Feature",
-                            geometry: route,
-                        },
-                    });
-
-                    newMap.addLayer({
-                        id: "route-line",
-                        type: "line",
-                        source: "route",
-                        layout: { "line-join": "round", "line-cap": "round" },
-                        paint: { "line-color": "#009688", "line-width": 4 },
-                    });
-                } else {
-                    console.error("No routes found");
+                } catch (error) {
+                    console.error("Error fetching route:", error);
                 }
-            } catch (error) {
-                console.error("Error fetching route:", error);
             }
-        };
-
-        if (inTransit && originCityCoords && destinationCityCoords) {
-            newMap.on("load", getRoute);
-        }
-
+        });
 
         return () => {
             document.head.removeChild(cssLink);
         };
-    }, [refresh]);
-
+    }, [map]);
 
 
 
@@ -192,7 +181,7 @@ const Map = ({ updateAddress, originCityCoords, destinationCityCoords, inTransit
             },
             (error) => {
             },
-            { enableHighAccuracy: true, timeout: 10000, maximumAge:0 }
+            { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
         );
 
         navigator.geolocation.watchPosition(
