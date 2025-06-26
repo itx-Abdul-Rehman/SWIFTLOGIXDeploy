@@ -71,7 +71,6 @@ const Map = ({ updateAddress, originCityCoords, destinationCityCoords, inTransit
             .setPopup(new mapboxgl.Popup().setHTML(`<h3>${placeName}</h3>`))
             .addTo(newMap);
 
-
         // Add origin and destination markers once
         if (inTransit && originCityCoords && destinationCityCoords) {
 
@@ -152,6 +151,23 @@ const Map = ({ updateAddress, originCityCoords, destinationCityCoords, inTransit
                 marker.setLngLat(coordinates);
                 marker.getPopup().setHTML(`<h3>${placeName}</h3>`);
                 map.flyTo({ center: coordinates, zoom: 7 });
+
+                const originMarkerElement = document.createElement("div");
+                originMarkerElement.innerHTML = `<img src=${start} style="width: 35px; height: 35px; border-radius: 50%;">`;
+                const originMarker = new mapboxgl.Marker({ element: originMarkerElement })
+                    .setLngLat(originCityCoords)
+                    .setPopup(new mapboxgl.Popup().setHTML(`<h3>${originPlace}</h3>`))
+                    .addTo(newMap);
+
+                const destMarkerElement = document.createElement("div");
+                destMarkerElement.innerHTML = `<img src=${end} style="width: 35px; height: 35px; border-radius: 50%;">`;
+                const destinationMarker = new mapboxgl.Marker({ element: destMarkerElement })
+                    .setLngLat(destinationCityCoords)
+                    .setPopup(new mapboxgl.Popup().setHTML(`<h3>${destPlace}</h3>`))
+                    .addTo(newMap);
+
+                setoriginMarker(originMarker);
+                setdestinationMarker(destinationMarker);
             } else {
                 marker.setLngLat(coordinates);
                 marker.getPopup().setHTML(`<h3>${placeName}</h3>`);

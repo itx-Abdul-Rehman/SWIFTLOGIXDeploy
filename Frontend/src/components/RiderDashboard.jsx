@@ -156,7 +156,7 @@ const RiderDashboard = () => {
                 }
 
                 const result = await response.json();
-                console.log(result)
+                
                 if (result.success) {
                     const shipments = result.transitShipments;
                     settransitShipments(shipments);
