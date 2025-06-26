@@ -50,9 +50,6 @@ const Map = ({ updateAddress, originCityCoords, destinationCityCoords, inTransit
 
 
     useEffect(() => {
-        // Only create map once
-        if (map) return;
-
         const cssLink = document.createElement("link");
         cssLink.rel = "stylesheet";
         cssLink.href = "https://api.mapbox.com/mapbox-gl-js/v3.7.0/mapbox-gl.css";
@@ -143,7 +140,7 @@ const Map = ({ updateAddress, originCityCoords, destinationCityCoords, inTransit
         return () => {
             document.head.removeChild(cssLink);
         };
-    }, [map]);
+    }, []);
 
 
 
