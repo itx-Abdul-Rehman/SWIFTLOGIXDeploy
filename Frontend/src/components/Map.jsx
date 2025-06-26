@@ -153,7 +153,7 @@ const Map = ({ updateAddress, originCityCoords, destinationCityCoords, inTransit
         return () => {
             document.head.removeChild(cssLink);
         };
-    }, [refresh,coordinates]);
+    }, [refresh]);
 
 
 
