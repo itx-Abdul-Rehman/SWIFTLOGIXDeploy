@@ -54,7 +54,7 @@ const AdminShipments = () => {
 
         const token = localStorage.getItem('token');
 
-        const response = await fetch('http://13.234.75.47:3000/admin', {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/admin`, {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`
@@ -83,7 +83,7 @@ const AdminShipments = () => {
   //here get selected shipments like pending,completed or scheduled from servers/database
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('http://13.234.75.47:3000/get-city-shipments',
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/get-city-shipments`,
         {
           method: 'POST',
           credentials: 'include',
@@ -227,7 +227,7 @@ const AdminShipments = () => {
   //here count shipments completed
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('http://13.234.75.47:3000/get-city-shipments',
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/get-city-shipments`,
         {
           method: 'POST',
           credentials: 'include',
@@ -250,7 +250,7 @@ const AdminShipments = () => {
   //here count shipments scheduled
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('http://13.234.75.47:3000/get-city-shipments',
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/get-city-shipments`,
         {
           method: 'POST',
           credentials: 'include',
@@ -273,7 +273,7 @@ const AdminShipments = () => {
   //here count shipments pending
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('http://13.234.75.47:3000/get-city-shipments',
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/get-city-shipments`,
         {
           method: 'POST',
           credentials: 'include',
@@ -296,7 +296,7 @@ const AdminShipments = () => {
   //here count shipments accepted
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('http://13.234.75.47:3000/get-city-shipments',
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/get-city-shipments`,
         {
           method: 'POST',
           credentials: 'include',
@@ -348,7 +348,7 @@ const AdminShipments = () => {
   const handleDroppedShipments = async (index) => {
     try {
       setProcessingIndex(index)
-      const response = await fetch('http://13.234.75.47:3000/dropped-shipment',
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/dropped-shipment`,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -389,7 +389,7 @@ const AdminShipments = () => {
         return
       }
       setProcessingIndex(index)
-      const response = await fetch("http://13.234.75.47:3000/rider-picked",
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/rider-picked`,
         {
           method: 'POST',
           credentials: 'include',
@@ -460,7 +460,7 @@ const AdminShipments = () => {
   const handleFilterPickByRider = async (date, time) => {
     try {
       setIsSelectPickByRider(true)
-      const response = await fetch('http://13.234.75.47:3000/get-shipment-pickbyrider',
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/get-shipment-pickbyrider`,
         {
           method: 'POST',
           credentials: 'include',
@@ -549,7 +549,7 @@ const AdminShipments = () => {
 
   const sendEmailNotification = async () => {
     try {
-      const response = await fetch('http://13.234.75.47:3000/send-notification', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/send-notification`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(allShipments)

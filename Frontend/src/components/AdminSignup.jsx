@@ -83,7 +83,7 @@ const AdminSignup = () => {
 
         try {
 
-            const response = await fetch('http://13.234.75.47:3000/admin-signup',
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/admin-signup`,
                 {
                     method: 'POST',
                     credentials: 'include',

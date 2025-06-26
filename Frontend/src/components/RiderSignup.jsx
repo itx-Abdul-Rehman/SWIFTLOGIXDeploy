@@ -49,7 +49,7 @@ const RiderSignup = () => {
 
     const handleNext = async () => {
         try {
-            const response = await fetch('http://13.234.75.47:3000/verify-riderdataexist',
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/verify-riderdataexist`,
                 {
                     method: 'POST',
                     credentials: 'include',
@@ -111,7 +111,7 @@ const RiderSignup = () => {
             formData.append('dateofbirth', riderInformation.dateofbirth);
             formData.append('picture', riderInformation.picture);
 
-            const response = await fetch('http://13.234.75.47:3000/rider-signup',
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/rider-signup`,
                 {
                     method: 'POST',
                     credentials: 'include',

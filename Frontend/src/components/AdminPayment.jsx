@@ -24,7 +24,7 @@ const AdminPayment = () => {
 
                 const token = localStorage.getItem('token');
 
-                const response = await fetch('http://13.234.75.47:3000/admin', {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/admin`, {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`
@@ -57,7 +57,7 @@ const AdminPayment = () => {
 
     const getTransaction = async () => {
         try {
-            const response = await fetch('http://13.234.75.47:3000/get-transaction',
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/get-transaction`,
                 {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -118,7 +118,7 @@ const AdminPayment = () => {
     const handlePay = async () => {
 
         try {
-            const response = await fetch('http://13.234.75.47:3000/transaction-pay',
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/transaction-pay`,
                 {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },

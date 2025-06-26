@@ -5,7 +5,7 @@ import end from './icons/end.png';
 import mapboxgl from "mapbox-gl";
 import { io } from 'socket.io-client';
 
-const socket = io("http://13.234.75.47:3000", {
+const socket = io(`${import.meta.env.VITE_API_URL}`, {
     reconnection: true,
     reconnectionAttempts: 10,
     reconnectionDelay: 1000,
@@ -57,7 +57,7 @@ const CustomerMap = ({ originCityCoords, destinationCityCoords, trackingId, setL
     // Fetch initial coordinates
     useEffect(() => {
         const fetchCoordinates = async () => {
-            const response = await fetch('http://13.234.75.47:3000/get-route-coordinates', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/get-route-coordinates`, {
                 method: 'POST',
                 credentials: 'include',
                 headers: { 'Content-Type': 'application/json' },

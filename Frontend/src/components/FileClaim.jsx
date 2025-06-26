@@ -132,7 +132,7 @@ const FileClaim = () => {
                 formData.append('proofShipmentValue', claimData.proofShipmentValue);
                 formData.append('anySupportingDocument', claimData.anySupportingDocument);
 
-                const response = await fetch('http://13.234.75.47:3000/insurance-claim', {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/insurance-claim`, {
                     method: 'POST',
                     credentials: 'include',
                     body: formData,

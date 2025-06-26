@@ -19,7 +19,7 @@ const stripe = new Stripe(process.env.STRIPE_KEY);  //stripe apikey used to acce
 
 router.use(cors({
     origin: 'http://13.234.75.47:5173',
-  credentials: true
+    credentials: true
 
 }));
 router.use(bodyParser.json());

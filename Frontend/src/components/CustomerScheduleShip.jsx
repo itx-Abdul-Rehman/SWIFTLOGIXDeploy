@@ -13,7 +13,7 @@ import SuccessfulPayment from './SuccessfulPayment';
 import SwiftBot from './SwiftBot';
 import OfflineOnline from './OfflineOnline';
 
-
+ 
 const CustomerScheduleShip = () => {
     const [barCode, setBarCode] = useState({
         success: '',
@@ -113,7 +113,7 @@ const CustomerScheduleShip = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://13.234.75.47:3000/customer-scheduleship',
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/customer-scheduleship`,
                     { credentials: 'include' }
                 );
                 const result = await response.json();
@@ -137,7 +137,7 @@ const CustomerScheduleShip = () => {
 
         // Send the form data to the server
         try {
-            const response = await fetch("http://13.234.75.47:3000/calculate-point", {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/calculate-point`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(packageFormData),
@@ -170,7 +170,7 @@ const CustomerScheduleShip = () => {
     //payment with cash handle here
     const handleWithCashPayment = async () => {
         try {
-            const response = await fetch('http://13.234.75.47:3000/scheduleaship-point',
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/scheduleaship-point`,
                 {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -207,7 +207,7 @@ const CustomerScheduleShip = () => {
     //payment with card handle here
     const handleWithCardPayment = async () => {
         try {
-            const response = await fetch('http://13.234.75.47:3000/checkout', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/checkout`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'include',
@@ -233,7 +233,7 @@ const CustomerScheduleShip = () => {
     //payment with wallet handle here
     const handleWithWalletPayment = async () => {
         try {
-            const response = await fetch('http://13.234.75.47:3000/wallet-payment',
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/wallet-payment`,
                 {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -305,7 +305,7 @@ const CustomerScheduleShip = () => {
     ////hanlde after completed payment here
     const handleCompletedPayment = async () => {
 
-        const response = await fetch('http://13.234.75.47:3000/bar-qrcode', {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/bar-qrcode`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ trackingId })

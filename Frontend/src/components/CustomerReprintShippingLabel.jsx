@@ -26,7 +26,7 @@ const ReprintShippingLabel = () => {
     const genrateBarCode = async (shipments) => {
 
         try {
-            const response = await fetch('http://13.234.75.47:3000/regenrate-bar-qrcode',
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/regenrate-bar-qrcode`,
                 {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -49,7 +49,7 @@ const ReprintShippingLabel = () => {
 
     const getShipmentsLabel = async () => {
         try {
-            const response = await fetch('http://13.234.75.47:3000/reprint-label',
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/reprint-label`,
                 {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -158,7 +158,7 @@ const ReprintShippingLabel = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://13.234.75.47:3000/customer-reprintlabel',
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/customer-reprintlabel`,
                     { credentials: 'include' }
                 );
                 const result = await response.json();

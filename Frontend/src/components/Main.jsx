@@ -75,7 +75,7 @@ const Main = () => {
 
         try {
             setIsResponse('processing')
-            const response = await fetch("http://13.234.75.47:3000/track-shipment", {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/track-shipment`, {
                 method: 'POST',
                 credentials: 'include',
                 headers: { 'Content-Type': 'application/json' },

@@ -12,7 +12,7 @@ const CustomerWallet = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://13.234.75.47:3000/wallet',
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/wallet`,
                     { credentials: 'include' }
                 );
                 const result = await response.json();

@@ -33,7 +33,7 @@ const SidebarRider = () => {
     const handleLogout = async () => {
         try {
 
-            const response = await fetch('http://13.234.75.47:3000/rider-logout',
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/rider-logout`,
                 { credentials: 'include' }
             );
 

@@ -63,7 +63,7 @@ const Signup = () => {
 
         try {
             setStatus('processing')
-            const response = await fetch('http://13.234.75.47:3000/signup',
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/signup`,
                 {
                     method: 'POST',
                     credentials: 'include',

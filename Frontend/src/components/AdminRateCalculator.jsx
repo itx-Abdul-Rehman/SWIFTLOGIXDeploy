@@ -27,7 +27,7 @@ const AdminRateCalculator = () => {
 
                 const token = localStorage.getItem('token');
 
-                const response = await fetch('http://13.234.75.47:3000/admin', {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/admin`, {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`
@@ -103,7 +103,7 @@ const AdminRateCalculator = () => {
         }
         setStatus("processing");
         try {
-            const response = await fetch("http://13.234.75.47:3000/calculate-point", {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/calculate-point`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formDetails),

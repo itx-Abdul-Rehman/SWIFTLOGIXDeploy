@@ -23,7 +23,7 @@ const CustomerDashboard = () => {
 
                 const token = localStorage.getItem('token');
 
-                const response = await fetch('http://13.234.75.47:3000/admin', {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/admin`, {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`
@@ -55,7 +55,7 @@ const CustomerDashboard = () => {
         }
 
         try {
-            const response = await fetch("http://13.234.75.47:3000/track-shipment", {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/track-shipment`, {
                 method: 'POST',
                 credentials: 'include',
                 headers: { 'Content-Type': 'application/json' },

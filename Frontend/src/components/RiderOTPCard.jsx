@@ -68,7 +68,7 @@ const RiderOTPCard = ({ email, userId, setOTPCard, setOTPVerified,  navigate }) 
     const otpJson = { otp: otpCode, userId: userId };
 
     try {
-      const response = await fetch('http://13.234.75.47:3000/rider-verifyotp', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/rider-verifyotp`, {
         method: 'POST',
         credentials:'include',
         headers: { 'Content-Type': 'application/json' },

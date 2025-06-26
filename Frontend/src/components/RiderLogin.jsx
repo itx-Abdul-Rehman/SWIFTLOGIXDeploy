@@ -63,7 +63,7 @@ const Login = () => {
     setError('');
     setIsResponse('processing')
     // Handle actual login logic here
-    const response = await fetch('http://13.234.75.47:3000/rider-login', {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/rider-login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
