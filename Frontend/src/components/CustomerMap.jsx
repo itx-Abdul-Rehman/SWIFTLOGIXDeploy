@@ -39,12 +39,7 @@ const CustomerMap = ({ originCityCoords, destinationCityCoords, trackingId, setL
 
     const calculateTimeDifference = (pastDate) => {
         const now = new Date();
-        const options = { timeZone: 'Asia/Karachi' };
-
-        const date = now.toLocaleDateString('en-PK', options);
-        const time = now.toLocaleTimeString('en-PK', options);
-        const datetime = `${date} ${time}`;
-        const diffMs = datetime - pastDate;
+        const diffMs = now - pastDate;
 
         const minutes = Math.floor(diffMs / (1000 * 60));
         const hours = Math.floor(diffMs / (1000 * 60 * 60));
