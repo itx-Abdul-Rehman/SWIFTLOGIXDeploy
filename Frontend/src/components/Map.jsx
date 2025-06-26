@@ -73,9 +73,10 @@ const Map = ({ updateAddress, originCityCoords, destinationCityCoords, inTransit
 
         setMap(newMap);
         setMarker(newMarker);
-
+        console.log('run1')
         // Add origin and destination markers once
         if (inTransit && originCityCoords && destinationCityCoords) {
+            console.log('run2')
             const originMarkerElement = document.createElement("div");
             originMarkerElement.innerHTML = `<img src=${start} style="width: 35px; height: 35px; border-radius: 50%;">`;
             const originMarker = new mapboxgl.Marker({ element: originMarkerElement })

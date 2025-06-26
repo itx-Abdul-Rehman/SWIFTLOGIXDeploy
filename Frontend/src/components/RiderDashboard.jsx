@@ -158,6 +158,7 @@ const RiderDashboard = () => {
                 const result = await response.json();
 
                 if (result.success) {
+                    console.log('run0')
                     const shipments = result.transitShipments;
                     settransitShipments(shipments);
                     setoriginCityCoords(result.originCityCoords);
