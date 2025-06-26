@@ -31,13 +31,13 @@ mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-.then(() => {
-  console.log('MongoDB connected');
-})
-.catch((err) => {
-  console.error('MongoDB connection error:', err.message);
-  console.error(err);
-});
+  .then(() => {
+    console.log('MongoDB connected');
+  })
+  .catch((err) => {
+    console.error('MongoDB connection error:', err.message);
+    console.error(err);
+  });
 
 
 app.set('trust proxy', 1);
@@ -84,11 +84,15 @@ io.on('connection', (socket) => {
   // Receive location updates from client with list of transitShipments
   socket.on('send-location', async ({ coordinates, transitShipments }) => {
     const now = new Date();
-    const datetime = `${now.toLocaleDateString()} ${now.toLocaleTimeString()}`;
+    const options = { timeZone: 'Asia/Karachi' };
+
+    const date = now.toLocaleDateString('en-PK', options);
+    const time = now.toLocaleTimeString('en-PK', options);
+    const datetime = `${date} ${time}`;
 
     await Promise.all(
       transitShipments.map(async (shipment) => {
-        
+
         await Route.updateOne(
           { trackingid: shipment.trackingid },
           { $set: { coordinates, datetime } },
