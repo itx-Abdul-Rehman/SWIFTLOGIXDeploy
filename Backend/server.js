@@ -61,13 +61,12 @@ app.use(cors({
 // Body parser
 app.use(express.json());
 
-// Use routes
-app.use(RateCalculator);
-app.use(ScheduleaShip);
-app.use(BecomeCustomer);
-app.use(BecomeRider);
-app.use(EmployeeRoute);
-app.use(InsuranceRoute);
+app.use('/api', RateCalculator);
+app.use('/api', ScheduleaShip);
+app.use('/api', BecomeCustomer);
+app.use('/api', BecomeRider);
+app.use('/api', EmployeeRoute);
+app.use('/api', InsuranceRoute);
 
 
 app.get('/home', (req, res) => {
