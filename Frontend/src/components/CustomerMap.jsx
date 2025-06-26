@@ -67,7 +67,7 @@ const CustomerMap = ({ originCityCoords, destinationCityCoords, trackingId, setL
             const result = await response.json();
             if (result.success) {
                 setCoordinates(result.route.coordinates);
-                const parsedDate = parseCustomDate(result.route.datetime);
+                const parsedDate = result.route.datetime;
                 calculateTimeDifference(parsedDate);
             }
         };
