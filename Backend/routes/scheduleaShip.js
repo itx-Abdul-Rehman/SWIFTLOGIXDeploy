@@ -275,7 +275,8 @@ router.get('/success-point', async (req, res) => {
 
 
         let now = new Date();
-        let datetime = `${now.toLocaleDateString()} ${now.toLocaleTimeString()}`
+        // let datetime = `${now.toLocaleDateString()} ${now.toLocaleTimeString()}`
+        let datetime=`${now}`;
         let trackingID = generateTrackingId();
         const paymentMethod = 'Online';
         const shipmentStatus = 'scheduled';
@@ -426,7 +427,8 @@ router.get('/success-point', async (req, res) => {
 //schedule point endpoint where all ships handle or save cash payment shipments
 router.post('/scheduleaship-point', async (req, res) => {
     let now = new Date();
-    let datetime = `${now.toLocaleDateString()} ${now.toLocaleTimeString()}`
+    // let datetime = `${now.toLocaleDateString()} ${now.toLocaleTimeString()}`
+    let datetime=`${now}`;
     let trackingID = generateTrackingId();
     const paymentMethod = 'Cash';
     const shipmentStatus = 'scheduled';
@@ -601,7 +603,8 @@ router.post('/scheduleaship-point', async (req, res) => {
 router.post('/wallet-payment', async (req, res) => {
     const user = req.session.userId;
     let now = new Date();
-    let datetime = `${now.toLocaleDateString()} ${now.toLocaleTimeString()}`
+    // let datetime = `${now.toLocaleDateString()} ${now.toLocaleTimeString()}`
+    let datetime=`${now}`;
     let trackingID = generateTrackingId();
     const paymentMethod = 'Wallet';
     const shipmentStatus = 'scheduled';
