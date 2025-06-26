@@ -11,7 +11,7 @@ import { RiderWalletTransactions } from '../models/riderWalletTransactions.js'
 const router = express.Router();
 
 router.use(cors({
-    origin: 'http://13.234.75.47:5173',
+    origin: 'https://swiftlogix.cc',
   credentials: true
 
 }));

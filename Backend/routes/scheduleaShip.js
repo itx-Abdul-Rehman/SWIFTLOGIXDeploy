@@ -18,7 +18,7 @@ const router = e.Router();
 const stripe = new Stripe(process.env.STRIPE_KEY);  //stripe apikey used to access stripe features
 
 router.use(cors({
-    origin: 'http://13.234.75.47:5173',
+    origin: 'https://swiftlogix.cc',
     credentials: true
 
 }));

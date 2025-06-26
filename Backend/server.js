@@ -47,26 +47,26 @@ app.use(session({
   saveUninitialized: false,
   cookie: {
     httpOnly: true,
-    secure: false,
+    secure: true,
     sameSite: 'lax'
   }
 }));
 
 // CORS configuration
 app.use(cors({
-  origin: 'http://13.234.75.47:5173',
+  origin: 'https://swiftlogix.cc',
   credentials: true
 }));
 
 // Body parser
 app.use(express.json());
 
-app.use('api', RateCalculator);
-app.use('api', ScheduleaShip);
-app.use('api', BecomeCustomer);
-app.use('api', BecomeRider);
-app.use('api', EmployeeRoute);
-app.use('api', InsuranceRoute);
+app.use('/api', RateCalculator);
+app.use('/api', ScheduleaShip);
+app.use('/api', BecomeCustomer);
+app.use('/api', BecomeRider);
+app.use('/api', EmployeeRoute);
+app.use('/api', InsuranceRoute);
 
 
 app.get('/home', (req, res) => {
