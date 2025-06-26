@@ -244,7 +244,9 @@ router.post('/insurance-claim', upload.fields([
         const anySupportingDocument = uploadedFiles.anySupportingDocument;
 
         let now = new Date();
-        let datetime = `${now.toLocaleDateString()} ${now.toLocaleTimeString()}`
+        let date = now.toLocaleDateString("en-PK", { timeZone: "Asia/Karachi" });
+        let time = now.toLocaleTimeString("en-PK", { timeZone: "Asia/Karachi" });
+        let datetime = `${date} ${time}`;
 
         const newInsuranceClaim = new insuranceClaim({
             trackingid: trackingId,

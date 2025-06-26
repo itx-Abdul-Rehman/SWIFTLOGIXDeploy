@@ -22,8 +22,8 @@ const geocoder = mbxGeocoding({ accessToken: process.env.MAP_TOKEN });
 const router = express.Router();
 
 router.use(cors({
-    origin: 'https://swiftlogix.cc',
-  credentials: true
+   origin: 'https://swiftlogix.cc',
+   credentials: true
 }));
 
 router.use(express.json());
@@ -406,7 +406,9 @@ router.post('/rider-signup', upload.fields([
    fs.unlinkSync(filePathpicture);
 
    let now = new Date();
-   let datetime = `${now.toLocaleDateString()} ${now.toLocaleTimeString()}`
+   let date = now.toLocaleDateString("en-PK", { timeZone: "Asia/Karachi" });
+   let time = now.toLocaleTimeString("en-PK", { timeZone: "Asia/Karachi" });
+   let datetime = `${date} ${time}`;
    signupDetails.datetime = datetime;
    //added rider in database
    const newRider = new Rider(signupDetails);
@@ -859,7 +861,9 @@ router.post('/shipment-completed', async (req, res) => {
                   );
                   //customer and rider wallet transaction make
                   let now = new Date();
-                  let datetime = `${now.toLocaleDateString()} ${now.toLocaleTimeString()}`;
+                  let date = now.toLocaleDateString("en-PK", { timeZone: "Asia/Karachi" });
+                  let time = now.toLocaleTimeString("en-PK", { timeZone: "Asia/Karachi" });
+                  let datetime = `${date} ${time}`;
                   const customerWalletTransaction = new CustomerWalletTransactions({
                      customerid: shipment.customerid,
                      transactionAmount: customerRewardPoints,
@@ -899,7 +903,9 @@ router.post('/withdraw-money-cash', async (req, res) => {
 
    try {
       let now = new Date();
-      let datetime = `${now.toLocaleDateString()} ${now.toLocaleTimeString()}`;
+      let date = now.toLocaleDateString("en-PK", { timeZone: "Asia/Karachi" });
+      let time = now.toLocaleTimeString("en-PK", { timeZone: "Asia/Karachi" });
+      let datetime = `${date} ${time}`;
 
       const wallet = await RiderWallet.findOne({
          riderid: riderid
@@ -1001,10 +1007,10 @@ router.post('/rider-cancel-shipment', async (req, res) => {
       if (!trackingid || !createdAt || !deliveryDate || !riderid) {
          return res.status(400).json({ success: false, message: 'Failed to cancel shipemnt' });
       }
-     
+
       const now = new Date();
       const acceptTime = new Date(createdAt);
-     
+
       const [dd, mm, yyyy] = deliveryDate.split('-');
       const deliverydate = new Date(`${yyyy}-${mm}-${dd}`);
       deliverydate.setHours(

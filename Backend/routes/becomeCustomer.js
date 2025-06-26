@@ -16,9 +16,10 @@ import { Rider } from '../models/riderModel.js'
 const geocoder = mbxGeocoding({ accessToken: process.env.MAP_TOKEN });
 const router = express.Router();
 
+
 router.use(cors({
-    origin: 'https://swiftlogix.cc',
-  credentials: true
+   origin: 'https://swiftlogix.cc',
+   credentials: true
 
 }));
 
@@ -145,7 +146,9 @@ router.post('/signup', async (req, res) => {
    await newCustomer.save();
    //added wallet of above user in database
    let now = new Date();
-   let datetime = `${now.toLocaleDateString()} ${now.toLocaleTimeString()}`
+   let date = now.toLocaleDateString("en-PK", { timeZone: "Asia/Karachi" });
+   let time = now.toLocaleTimeString("en-PK", { timeZone: "Asia/Karachi" });
+   let datetime = `${date} ${time}`;
    const newWallet = new Wallet({
       customerid: newCustomer._id,
       points: initialRewardPoints,
