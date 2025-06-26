@@ -157,14 +157,14 @@ const Map = ({ updateAddress, originCityCoords, destinationCityCoords, inTransit
                 const originMarker = new mapboxgl.Marker({ element: originMarkerElement })
                     .setLngLat(originCityCoords)
                     .setPopup(new mapboxgl.Popup().setHTML(`<h3>${originPlace}</h3>`))
-                    .addTo(newMap);
+                    .addTo(map);
 
                 const destMarkerElement = document.createElement("div");
                 destMarkerElement.innerHTML = `<img src=${end} style="width: 35px; height: 35px; border-radius: 50%;">`;
                 const destinationMarker = new mapboxgl.Marker({ element: destMarkerElement })
                     .setLngLat(destinationCityCoords)
                     .setPopup(new mapboxgl.Popup().setHTML(`<h3>${destPlace}</h3>`))
-                    .addTo(newMap);
+                    .addTo(map);
 
                 setoriginMarker(originMarker);
                 setdestinationMarker(destinationMarker);
