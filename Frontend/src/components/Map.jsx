@@ -6,7 +6,7 @@ import end from './icons/end.png'
 import mapboxgl from "mapbox-gl";
 import { io } from 'socket.io-client';
 
-const socket = io(`${import.meta.env.VITE_API_URL}`, {
+const socket = io(`https://swiftlogix.cc`, {
     reconnection: true,
     reconnectionAttempts: 10,
     reconnectionDelay: 1000,
