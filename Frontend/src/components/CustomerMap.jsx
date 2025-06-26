@@ -182,7 +182,7 @@ const CustomerMap = ({ originCityCoords, destinationCityCoords, trackingId, setL
         if (riderMarkerRef.current && mapRef.current) {
             riderMarkerRef.current.setLngLat(coordinates);
             riderMarkerRef.current.getPopup().setHTML(`<h3>${placeName}</h3>`);
-            mapRef.current.flyTo({ center: coordinates, zoom: 7 });
+            mapRef.current.flyTo({ center: coordinates, zoom: 12 });
         }
     }, [coordinates]);
 
