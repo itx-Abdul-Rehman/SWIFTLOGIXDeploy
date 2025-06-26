@@ -106,7 +106,7 @@ const CustomerMap = ({ originCityCoords, destinationCityCoords, trackingId, setL
             container: "map",
             style: "mapbox://styles/mapbox/streets-v12",
             center: coordinates,
-            zoom: 7,
+            zoom: 12,
         });
 
         map.addControl(new mapboxgl.NavigationControl());
