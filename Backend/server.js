@@ -69,7 +69,7 @@ app.use('/api', EmployeeRoute);
 app.use('/api', InsuranceRoute);
 
 
-app.get('/home', (req, res) => {
+app.get('/api/home', (req, res) => {
   res.send("Backend running....")
 });
 
