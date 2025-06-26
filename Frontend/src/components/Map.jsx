@@ -168,6 +168,40 @@ const Map = ({ updateAddress, originCityCoords, destinationCityCoords, inTransit
 
                 setoriginMarker(originMarker);
                 setdestinationMarker(destinationMarker);
+
+                newMap.on("load", async () => {
+                    if (inTransit && originCityCoords && destinationCityCoords) {
+                        const url = `https://api.mapbox.com/directions/v5/mapbox/driving/${originCityCoords.lng},${originCityCoords.lat};${destinationCityCoords.lng},${destinationCityCoords.lat}?geometries=geojson&access_token=${mapboxgl.accessToken}`;
+                        try {
+                            const response = await fetch(url);
+                            const data = await response.json();
+
+                            if (data.routes.length > 0) {
+                                const route = data.routes[0].geometry;
+
+                                newMap.addSource("route", {
+                                    type: "geojson",
+                                    data: {
+                                        type: "Feature",
+                                        geometry: route,
+                                    },
+                                });
+
+                                newMap.addLayer({
+                                    id: "route-line",
+                                    type: "line",
+                                    source: "route",
+                                    layout: { "line-join": "round", "line-cap": "round" },
+                                    paint: { "line-color": "#009688", "line-width": 4 },
+                                });
+                            } else {
+                                console.error("No routes found");
+                            }
+                        } catch (error) {
+                            console.error("Error fetching route:", error);
+                        }
+                    }
+                });
             } else {
                 marker.setLngLat(coordinates);
                 marker.getPopup().setHTML(`<h3>${placeName}</h3>`);
