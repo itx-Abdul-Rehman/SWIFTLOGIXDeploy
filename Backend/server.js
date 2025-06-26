@@ -49,7 +49,7 @@ app.use(session({
   cookie: {
     httpOnly: true,
     secure: true,
-    sameSite: 'lax'
+    sameSite: 'none'
   }
 }));
 
