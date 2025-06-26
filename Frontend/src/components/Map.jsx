@@ -71,13 +71,10 @@ const Map = ({ updateAddress, originCityCoords, destinationCityCoords, inTransit
             .setPopup(new mapboxgl.Popup().setHTML(`<h3>${placeName}</h3>`))
             .addTo(newMap);
 
-        setMap(newMap);
-        setMarker(newMarker);
-        console.log(inTransit);
-        console.log(originCityCoords);
-        console.log(destinationCityCoords)
+
         // Add origin and destination markers once
         if (inTransit && originCityCoords && destinationCityCoords) {
+
             const originMarkerElement = document.createElement("div");
             originMarkerElement.innerHTML = `<img src=${start} style="width: 35px; height: 35px; border-radius: 50%;">`;
             const originMarker = new mapboxgl.Marker({ element: originMarkerElement })
@@ -96,8 +93,6 @@ const Map = ({ updateAddress, originCityCoords, destinationCityCoords, inTransit
             setdestinationMarker(destinationMarker);
         }
 
-
-
         newMap.addControl(
             new mapboxgl.GeolocateControl({
                 positionOptions: { enableHighAccuracy: true },
@@ -107,47 +102,42 @@ const Map = ({ updateAddress, originCityCoords, destinationCityCoords, inTransit
         );
 
         // Draw route once map is ready
-        const getRoute = async () => {
-            const url = `https://api.mapbox.com/directions/v5/mapbox/driving/${originCityCoords.lng},${originCityCoords.lat};${destinationCityCoords.lng},${destinationCityCoords.lat}?geometries=geojson&access_token=${mapboxgl.accessToken}`;
-            try {
-                const response = await fetch(url);
-                const data = await response.json();
+        newMap.on("load", async () => {
+            if (inTransit && originCityCoords && destinationCityCoords) {
+                const url = `https://api.mapbox.com/directions/v5/mapbox/driving/${originCityCoords.lng},${originCityCoords.lat};${destinationCityCoords.lng},${destinationCityCoords.lat}?geometries=geojson&access_token=${mapboxgl.accessToken}`;
+                try {
+                    const response = await fetch(url);
+                    const data = await response.json();
 
-                if (data.routes.length > 0) {
-                    const route = data.routes[0].geometry;
+                    if (data.routes.length > 0) {
+                        const route = data.routes[0].geometry;
 
-                    if (newMap.getSource("route")) {
-                        newMap.removeLayer("route-line");
-                        newMap.removeSource("route");
+                        newMap.addSource("route", {
+                            type: "geojson",
+                            data: {
+                                type: "Feature",
+                                geometry: route,
+                            },
+                        });
+
+                        newMap.addLayer({
+                            id: "route-line",
+                            type: "line",
+                            source: "route",
+                            layout: { "line-join": "round", "line-cap": "round" },
+                            paint: { "line-color": "#009688", "line-width": 4 },
+                        });
+                    } else {
+                        console.error("No routes found");
                     }
-
-                    newMap.addSource("route", {
-                        type: "geojson",
-                        data: {
-                            type: "Feature",
-                            geometry: route,
-                        },
-                    });
-
-                    newMap.addLayer({
-                        id: "route-line",
-                        type: "line",
-                        source: "route",
-                        layout: { "line-join": "round", "line-cap": "round" },
-                        paint: { "line-color": "#009688", "line-width": 4 },
-                    });
-                } else {
-                    console.error("No routes found");
+                } catch (error) {
+                    console.error("Error fetching route:", error);
                 }
-            } catch (error) {
-                console.error("Error fetching route:", error);
             }
-        };
+        });
 
-        if (inTransit && originCityCoords && destinationCityCoords) {
-            newMap.on("load", getRoute);
-        }
-
+        setMap(newMap);
+        setMarker(newMarker);
 
         return () => {
             document.head.removeChild(cssLink);
