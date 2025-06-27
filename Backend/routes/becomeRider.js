@@ -713,6 +713,15 @@ router.post('/assigned-delivery', async (req, res) => {
          }
       }
 
+      const assignResult = await ScheduleShip.updateOne(
+         { _id: req.body.shipmentid, assigned: false },
+         { $set: { assigned: true, shipmentStatus: deliveryStatus } }
+      );
+
+      if (assignResult.modifiedCount === 0) {
+         return res.json({ success: false, message: 'This shipment is already assigned to another rider.' });
+      }
+
 
       const newDeliverShipment = new DeliverShipment({
          trackingid: req.body.trackingid,
@@ -729,9 +738,6 @@ router.post('/assigned-delivery', async (req, res) => {
       })
 
       await newDeliverShipment.save();
-      await ScheduleShip.updateOne({ _id: req.body.shipmentid }, { $set: { assigned: true, shipmentStatus: deliveryStatus } })
-
-      // await sendAcceptEmail(senderemail, originCity, destinationCity, trackingId)
 
       res.json({ success: true, message: 'Shipment assigned successfully.' });
    } catch (error) {
