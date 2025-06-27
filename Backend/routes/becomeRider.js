@@ -889,7 +889,29 @@ router.post('/shipment-completed', async (req, res) => {
                   await riderWalletTransaction.save();
                   await sendCompletedEmail(shipment.senderemail, shipment.originCity, shipment.destinationCity, shipment.trackingid);
                } else {
-                  return res.status(404).json({ success: false, message: "Wallet not exist" });
+                  //update rider wallet
+                  const riderShipmentPrice = shipment.totalPrice;//rider shipment price
+                  const updatedRiderReward = Number(riderWallet.points) + Number(riderShipmentPrice);
+                  await RiderWallet.updateOne(
+                     { riderid: riderid },
+                     { $set: { points: updatedRiderReward } }
+                  );
+
+                  let now = new Date();
+                  let date = now.toLocaleDateString("en-PK", { timeZone: "Asia/Karachi" });
+                  let time = now.toLocaleTimeString("en-PK", { timeZone: "Asia/Karachi" });
+                  let datetime = `${date} ${time}`;
+
+                  const riderWalletTransaction = new RiderWalletTransactions({
+                     riderid: riderid,
+                     transactionAmount: riderShipmentPrice,
+                     transactionType: 'Added',
+                     datetime: datetime
+                  });
+
+                  await Route.deleteMany({ trackingid: shipment.trackingid });
+                  await riderWalletTransaction.save();
+                  await sendCompletedEmail(shipment.senderemail, shipment.originCity, shipment.destinationCity, shipment.trackingid);
                }
             } catch (error) {
                return res.status(500).json({ success: false, message: "Server Error Shipment Status not updated" });
