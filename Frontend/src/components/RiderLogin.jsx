@@ -107,7 +107,7 @@ const Login = () => {
       <Navbar />
       <OfflineOnline />
       <FadeInSection delay={0.2} >
-        <div className='w-full bg-[#009688] text-white flex justify-center items-center p-6 sm:p-8'>
+        <div className='w-full bg-[#FF0000] text-white flex justify-center items-center p-6 sm:p-8'>
           <div className='text-3xl sm:text-5xl font-semibold text-center'>Rider Portal</div>
         </div>
 
